@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './index.css'
+import { useState } from "react";
+
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [input, setInput] = useState("");
+  const [isPolindrom, setIsPolindrom] = useState("");
+
+  function palindromHandler(text) {
+    if (input !== "") {
+      const modifiedInput = text.toLowerCase().replace(/\s/g, "");
+      const reversedInput = modifiedInput.split("").reverse().join("");
+      setIsPolindrom(
+        modifiedInput === reversedInput ? (
+          <p>«{input}» is a palindrom 👍</p>
+        ) : (
+          <p>«{input}» is not a palindrom 👎</p>
+        )
+      );
+    } else return null;
+  }
+
+  function resetFunction() {
+    if (input !== "") {
+      setInput("");
+    } else {
+      setIsPolindrom("");
+    }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main>
+        <div className="container">
+          <h1>Palindrom checker</h1>
+          <div>
+            <label>
+              {" "}
+              Check if a word, a number or a sentence is a Palindrom:{" "}
+            </label>
+            <input
+              type="text"
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="type here..."
+              value={input}
+            />
+            <button
+              onClick={() => {
+                palindromHandler(input);
+                resetFunction();
+              }}
+            >
+              Check
+            </button>
+          </div>
+          <h3>{isPolindrom}</h3>
+        </div>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
