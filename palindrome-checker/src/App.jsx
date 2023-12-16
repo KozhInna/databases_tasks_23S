@@ -50,7 +50,7 @@ function App() {
                 resetFunction();
               }}
             >
-              Check
+              {isPolindrom === "" ? "Check" : "Clean"}
             </button>
           </div>
           <h3>{isPolindrom}</h3>
