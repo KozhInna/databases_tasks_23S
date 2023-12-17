@@ -1,10 +1,20 @@
 import "./App.css";
-import BubbleSortPage from "./pages/BubbleSort-page";
+import BubbleSort from "./pages/BubbleSort";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
+import Palindrome from "./pages/Palindrome";
+import StackData from "./pages/StackData";
 
 function App() {
+  const router = createBrowserRouter([
+    { path: "/", element: <Home /> },
+    { path: "/palindrome", element: <Palindrome /> },
+    { path: "/bubble", element: <BubbleSort /> },
+    { path: "/stackdata", element: <StackData /> },
+  ]);
   return (
     <div>
-      <BubbleSortPage />
+      <RouterProvider router={router} />
     </div>
   );
 }

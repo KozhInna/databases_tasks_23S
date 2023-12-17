@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "./BubbleSort-page.module.css";
+import styles from "./BubbleSort.module.css";
+import Header from "../Components/Header";
 
-function BubbleSortPage() {
+function BubbleSort() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState([]);
   const [sorted, setSorted] = useState(false);
@@ -29,10 +30,11 @@ function BubbleSortPage() {
   console.log(input);
   return (
     <>
+      <Header />
       <main>
         <div className={styles.container}>
           <h1> Bubble sort </h1>
-          <p>Enter numbers and sort them from the smallest to the biggest</p>
+          <p>Enter numbers and sort them from smallest to largest</p>
           <input value={input} onChange={(e) => setInput(e.target.value)} />
           <button
             onClick={() => {
@@ -73,4 +75,4 @@ function BubbleSortPage() {
     </>
   );
 }
-export default BubbleSortPage;
+export default BubbleSort;
