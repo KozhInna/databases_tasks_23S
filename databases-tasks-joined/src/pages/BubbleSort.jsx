@@ -64,7 +64,7 @@ function BubbleSort() {
             onClick={() => {
               setOutput(bubbleSort(output));
               setSorted(true);
-              setReset(!reset);
+              setReset(input !== "" && !reset);
               cleanOutput();
             }}
           >

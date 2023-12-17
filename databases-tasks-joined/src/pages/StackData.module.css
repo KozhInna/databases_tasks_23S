@@ -58,3 +58,7 @@
   flex-direction: column;
   align-items: center;
 }
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+}
