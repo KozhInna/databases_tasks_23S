@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./BubbleSort-page.module.css";
 
 function BubbleSortPage() {
   const [input, setInput] = useState("");
@@ -7,48 +8,68 @@ function BubbleSortPage() {
   const [reset, setReset] = useState(false);
 
   function bubbleSort(array) {
-    for (let i = 0; i < array.length; i++) {
-      for (let y = 0; y < array.length; y++) {
-        if (array[y] > array[y + 1]) {
-          let change = array[y];
-          array[y] = array[y + 1];
-          array[y + 1] = change;
+    const newArray = array.filter((el) => el !== "");
+    for (let i = 0; i < newArray.length; i++) {
+      for (let y = 0; y < newArray.length; y++) {
+        if (parseInt(newArray[y]) > parseInt(newArray[y + 1])) {
+          let change = newArray[y];
+          newArray[y] = newArray[y + 1];
+          newArray[y + 1] = change;
         }
       }
     }
-    return array;
+    return newArray;
   }
   function cleanOutput() {
     if (reset) {
       setOutput([]);
     }
   }
+  console.log(output);
+  console.log(input);
   return (
     <>
-      <input value={input} onChange={(e) => setInput(e.target.value)} />
-      <button
-        onClick={() => {
-          setOutput([...output, input]);
-          setInput("");
-          setReset(false);
-        }}
-      >
-        Add number
-      </button>
-      <div>
-        {!sorted && output.map((el, i) => <p key={i}>{el}</p>)}
-        {sorted && output.map((el, i) => <p key={i}>{el}</p>)}
-      </div>
-      <button
-        onClick={() => {
-          setOutput(bubbleSort(output));
-          setSorted(true);
-          setReset(!reset);
-          cleanOutput();
-        }}
-      >
-        {reset ? "Clean" : "Sort"}
-      </button>
+      <main>
+        <div className={styles.container}>
+          <h1> Bubble sort </h1>
+          <p>Enter numbers and sort them from the smallest to the biggest</p>
+          <input value={input} onChange={(e) => setInput(e.target.value)} />
+          <button
+            onClick={() => {
+              if (input !== "")
+                setOutput(!isNaN(input) ? [...output, input] : [...output, ""]);
+              setInput("");
+              setReset(false);
+            }}
+          >
+            Add number
+          </button>
+          <div className={styles.numbersBox}>
+            {!sorted &&
+              output.map((el, i) => (
+                <p className={styles.numbers} key={i}>
+                  {el}
+                </p>
+              ))}
+            {sorted &&
+              output.map((el, i) => (
+                <p key={i} className={styles.numbers}>
+                  {el}
+                </p>
+              ))}
+          </div>
+          <button
+            onClick={() => {
+              setOutput(bubbleSort(output));
+              setSorted(true);
+              setReset(!reset);
+              cleanOutput();
+            }}
+          >
+            {reset ? "Clean" : "Sort"}
+          </button>
+        </div>
+      </main>
     </>
   );
 }
