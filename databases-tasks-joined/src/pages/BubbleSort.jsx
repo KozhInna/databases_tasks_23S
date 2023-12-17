@@ -30,8 +30,8 @@ function BubbleSort() {
   console.log(input);
   return (
     <>
-      <Header />
       <main>
+        <Header />
         <div className={styles.container}>
           <h1> Bubble sort </h1>
           <p>Enter numbers and sort them from smallest to largest</p>
