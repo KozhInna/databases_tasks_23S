@@ -36,7 +36,7 @@ function StackData() {
                 <div
                   className={styles.btn}
                   onClick={() => {
-                    setClickedMode("stack");
+                    setClickedMode(clickedMode !== "stack" ? "stack" : "");
                     setArrValue([]);
                   }}
                   style={{
@@ -50,7 +50,7 @@ function StackData() {
                 <div
                   className={styles.btn}
                   onClick={() => {
-                    setClickedMode("queue");
+                    setClickedMode(clickedMode !== "queue" ? "queue" : "");
                     setArrValue([]);
                   }}
                   style={{
