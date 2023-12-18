@@ -46,20 +46,20 @@ function BubbleSort() {
           >
             Add number
           </button>
-          <div className={styles.numbersBox}>
+          <section className={styles.numberBox}>
             {!sorted &&
               output.map((el, i) => (
-                <p className={styles.numbers} key={i}>
+                <span key={i} className={styles.numbers}>
                   {el}
-                </p>
+                </span>
               ))}
             {sorted &&
               output.map((el, i) => (
-                <p key={i} className={styles.numbers}>
+                <span key={i} className={styles.numbers}>
                   {el}
-                </p>
+                </span>
               ))}
-          </div>
+          </section>
           <button
             onClick={() => {
               setOutput(bubbleSort(output));

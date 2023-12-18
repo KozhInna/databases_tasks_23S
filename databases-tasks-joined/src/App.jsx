@@ -1,4 +1,4 @@
-import "./App.css";
+import "../public/App.css"
 import BubbleSort from "./pages/BubbleSort";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
